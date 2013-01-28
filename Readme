@@ -1,0 +1,6 @@
+This is a OO practice.
+The requirement is, once there is a plumber, and want to join, incise, or some other operations for pipes, whatever.
+And what I need to do, is to create a library to support the operations.
+BTW, the purpose of the practice is to remove bad smells of code and try to make good code.
+
+2013.1.28
