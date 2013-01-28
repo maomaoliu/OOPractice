@@ -1,24 +1,17 @@
 package oo;
 
 public class Pipe {
-    private float length;
     private LengthUnit lengthUnit;
+
+    private float length;
 
     public Pipe(float length, LengthUnit lengthUnit) {
         this.length = length;
         this.lengthUnit = lengthUnit;
     }
 
-    public Pipe add(Pipe pipe) {
-        return new Pipe(transformToCm(this) + transformToCm(pipe), LengthUnit.CM);
-    }
-
-    public Pipe minus(Pipe pipe) {
-        return new Pipe(transformToCm(this) - transformToCm(pipe), LengthUnit.CM);
-    }
-
-    private float transformToCm(Pipe pipe) {
-        return pipe.length * pipe.lengthUnit.ratioToStandardUnit();
+    public float transformToCm() {
+        return getLength() * getLengthUnit().ratioToStandardUnit();
     }
 
     @Override
@@ -28,7 +21,7 @@ public class Pipe {
 
         Pipe pipe = (Pipe) o;
 
-        if (transformToCm(this) != transformToCm(pipe)) return false;
+        if (this.transformToCm() != pipe.transformToCm()) return false;
 
         return true;
     }
@@ -38,5 +31,13 @@ public class Pipe {
         int result = (length != +0.0f ? Float.floatToIntBits(length) : 0);
         result = 31 * result + lengthUnit.hashCode();
         return result;
+    }
+
+    public float getLength() {
+        return length;
+    }
+
+    public LengthUnit getLengthUnit() {
+        return lengthUnit;
     }
 }
