@@ -55,4 +55,13 @@ public class PipeTest {
         assertThat(resultPipes.get(1), is(new Pipe(1.4f, LengthUnit.M)));
     }
 
+    @Test
+    public void pipeCanMinusByLength() {
+        Pipe pipe = new Pipe(2, LengthUnit.M);
+        List<Pipe> resultPipes = plumber.inciseByLengthWithSameUnit(pipe, 0.3f);
+        assertThat(resultPipes.size(), is(2));
+        assertThat(resultPipes.get(0), is(new Pipe(1.7f, LengthUnit.M)));
+        assertThat(resultPipes.get(1), is(new Pipe(0.3f, LengthUnit.M)));
+    }
+
 }

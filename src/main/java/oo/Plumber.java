@@ -15,4 +15,11 @@ public class Plumber {
         pipes.add(new Pipe(pipe.toStandardUnit() * (1 - scale), LengthUnit.CM));
         return pipes;
     }
+
+    public List<Pipe> inciseByLengthWithSameUnit(Pipe pipe, float length) {
+        List<Pipe> pipes = new ArrayList<Pipe>();
+        pipes.add(new Pipe(pipe.getLength() - length, pipe.getLengthUnit()));
+        pipes.add(new Pipe(length, pipe.getLengthUnit()));
+        return pipes;
+    }
 }

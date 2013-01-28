@@ -14,6 +14,14 @@ public class Pipe {
         return length * lengthUnit.ratioToStandardUnit();
     }
 
+    public LengthUnit getLengthUnit() {
+        return lengthUnit;
+    }
+
+    public float getLength() {
+        return length;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
