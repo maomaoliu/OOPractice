@@ -10,7 +10,7 @@ public class Pipe {
         this.lengthUnit = lengthUnit;
     }
 
-    public float transformToCm() {
+    public float toStandardUnit() {
         return length * lengthUnit.ratioToStandardUnit();
     }
 
@@ -21,7 +21,7 @@ public class Pipe {
 
         Pipe pipe = (Pipe) o;
 
-        return this.transformToCm() == pipe.transformToCm();
+        return this.toStandardUnit() == pipe.toStandardUnit();
 
     }
 
