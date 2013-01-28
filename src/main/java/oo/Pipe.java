@@ -11,7 +11,7 @@ public class Pipe {
     }
 
     public float transformToCm() {
-        return getLength() * getLengthUnit().ratioToStandardUnit();
+        return length * lengthUnit.ratioToStandardUnit();
     }
 
     @Override
@@ -21,9 +21,8 @@ public class Pipe {
 
         Pipe pipe = (Pipe) o;
 
-        if (this.transformToCm() != pipe.transformToCm()) return false;
+        return this.transformToCm() == pipe.transformToCm();
 
-        return true;
     }
 
     @Override
@@ -31,13 +30,5 @@ public class Pipe {
         int result = (length != +0.0f ? Float.floatToIntBits(length) : 0);
         result = 31 * result + lengthUnit.hashCode();
         return result;
-    }
-
-    public float getLength() {
-        return length;
-    }
-
-    public LengthUnit getLengthUnit() {
-        return lengthUnit;
     }
 }
