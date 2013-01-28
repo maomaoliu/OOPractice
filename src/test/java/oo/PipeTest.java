@@ -19,22 +19,25 @@ public class PipeTest {
 
     @Test
     public void pipeCanAddPipeWithSameUnit() {
-        Pipe pipe = new Pipe(5, LengthUnit.CM);
-        Pipe result = plumber.join(pipe, new Pipe(5, LengthUnit.CM));
+        Pipe pipe1 = new Pipe(5, LengthUnit.CM);
+        Pipe pipe2 = new Pipe(5, LengthUnit.CM);
+        Pipe result = plumber.join(pipe1, pipe2);
         assertThat(result, is(new Pipe(10, LengthUnit.CM)));
     }
 
     @Test
     public void pipeCanAddPipeWithDifferentUnit() {
-        Pipe pipe = new Pipe(2, LengthUnit.M);
-        Pipe resultPipe = plumber.join(pipe, new Pipe(30, LengthUnit.CM));
+        Pipe pipe1 = new Pipe(2, LengthUnit.M);
+        Pipe pipe2 = new Pipe(30, LengthUnit.CM);
+        Pipe resultPipe = plumber.join(pipe1, pipe2);
         assertThat(resultPipe, is(new Pipe(230, LengthUnit.CM)));
     }
 
     @Test
     public void pipeCanAddPipeWithDMAndM() {
-        Pipe pipe = new Pipe(2, LengthUnit.DM);
-        Pipe resultPipe = plumber.join(pipe, new Pipe(3, LengthUnit.M));
+        Pipe pipe1 = new Pipe(2, LengthUnit.DM);
+        Pipe pipe2 = new Pipe(3, LengthUnit.M);
+        Pipe resultPipe = plumber.join(pipe1, pipe2);
         assertThat(resultPipe, is(new Pipe(320, LengthUnit.CM)));
     }
 
@@ -44,7 +47,7 @@ public class PipeTest {
     }
 
     @Test
-    public void pipeCanMinusWithDifferentUnit() {
+    public void pipeCanMinusByScale() {
         Pipe pipe = new Pipe(2, LengthUnit.M);
         List<Pipe> resultPipes = plumber.inciseByScale(pipe, 0.3f);
         assertThat(resultPipes.size(), is(2));
